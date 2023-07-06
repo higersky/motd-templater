@@ -1,0 +1,18 @@
+@{
+   nickname := echo Sky
+   date := date 
+   users := echo $((`users | wc -w` + 1)) 
+   
+   env root_usage = $root_disk_usage
+   env memory_usage = $memory_usage
+   env swap_usage = $swap_usage
+   env cpu_cores = $cpu_cores
+   env load = $load1
+   warn := bash ./test/warn.sh
+}
+
+> {$cpu_cores} cores Server {$hostname:underline} with {nickname:bold:underline} @ {date}
+  System Load	: {$load5}	Physical Memory	: {$memory_usage:percent:warn_color}
+  Disk Usage	: {$root_disk_usage:percent:warn_color}	Swap Usage	: {$swap_usage}
+  Sessions	: {users}	CUDA Version	: {$cuda_version}
+{warn}

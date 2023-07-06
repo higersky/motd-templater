@@ -1,0 +1,16 @@
+anystr     =  { (!"{" ~ !"}" ~ !"@" ~ ANY)+ }
+identifier =  { (ASCII_ALPHANUMERIC | "-" | "_")+ }
+whitespace = _{ WHITE_SPACE* }
+escape     =  { "{{" | "}}" | "@" }
+
+modifiers  =  { (":" ~ identifier ~ whitespace)+ }
+builtin    =  { "$" ~ identifier ~ whitespace ~ modifiers? }
+custom     =  { identifier ~ whitespace ~ modifiers? }
+template   =  { "{" ~ whitespace ~ (builtin | custom) ~ whitespace ~ "}" }
+
+configs    =  { "@{" ~ (environ | config)+ ~ whitespace ~ "}" ~ NEWLINE }
+environ    =  { whitespace ~ "env" ~ whitespace ~ identifier ~ whitespace ~ "=" ~ whitespace ~ "$" ~ identifier ~ NEWLINE}
+config     =  { whitespace ~ identifier ~ whitespace ~ ":=" ~ whitespace ~ command ~ NEWLINE }
+command    =  { (!NEWLINE ~ ANY)+}
+
+file       =  { SOI ~ configs? ~ (escape | template | anystr)+ ~ EOI }
