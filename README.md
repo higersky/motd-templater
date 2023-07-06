@@ -38,7 +38,7 @@ At the beginning of the file, you can assign custom variables as the output of a
 - Use `<name> := <command>` to assign custom variables. Commands will be executed as `sh -c <command>`. The program passes `<command>` as a single argument, so you don't need to add extra quotation marks.
 - Use `env <name> := <builtin>` to assign environment variables. It will apply to all of the following commands.
 
-```txt
+```
 @{
    nickname := echo Sky
    date := date 
@@ -55,9 +55,9 @@ At the beginning of the file, you can assign custom variables as the output of a
 
 After that, you can write the contents. The program will replace template expressions with its actual values, and write all characters to the standard output.  
 
-- Syntax: {identifier :optional_modifier1 :optional_modifier2 ...}
+- Syntax: `{identifier :optional_modifier1 :optional_modifier2 ...}`
 
-```txt
+```
 > {$cpu_cores} cores Server {$hostname:underline} with {nickname:bold:underline} @ {date}
   System Load	: {$load5}	Physical Memory	: {$memory_usage:percent:warn_color}
   Disk Usage	: {$root_disk_usage:percent:warn_color}	Swap Usage	: {$swap_usage}
