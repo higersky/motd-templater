@@ -17,7 +17,7 @@ $ sudo cp target/release/motd-templater /usr/local/bin
 
 ## Usage
 
-The program parse a template file and generate the motd message for you. You can call it in motd scripts, e.g. `/etc/update-motd.d/01-sysinfo`
+The program parses a template file and generates the motd message for you. You can call it in motd scripts, e.g. `/etc/update-motd.d/01-sysinfo`
 
 ```bash
 $ motd-templater
