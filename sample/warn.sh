@@ -26,6 +26,6 @@ fi
 
 threshold=$(( cpu_cores * 2 - cpu_cores / 2 ))
 
-if (( $(echo "$load > $cpu_cores " | bc -l))); then
+if (( $(echo "$load > $threshold " | bc -l))); then
     echo -e "\e[33m Warning: System load is high \e[0m"
 fi
