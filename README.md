@@ -36,7 +36,7 @@ At the beginning of the file, you can assign custom variables as the output of a
 - This part is optional.
 - Declare one assignment per line.
 - Use `<name> := <command>` to assign custom variables. Commands will be executed as `sh -c <command>`. The program passes `<command>` as a single argument, so you don't need to add extra quotation marks.
-- Use `env <name> := <builtin>` to assign environment variables. It will apply to all of the following commands.
+- Use `env <name> := <builtin>` to assign environment variables with builtin variables. It will apply to all of the following commands.
 
 ```
 @{
@@ -65,4 +65,4 @@ After that, you can write the contents. The program will replace template expres
 {warn}
 ```
 
-Use any variables inside braces defiend at the beginning. You can also use predefined variables starting with $. (See `src/handlers.rs` for more information). Modifiers provide string transformations such as colorizing or formatting.
+Use any variables inside braces defiend at the beginning. You can also use builtin variables starting with $ (See `src/handlers.rs` for more information). Modifiers provide string transformations such as colorizing or formatting.
