@@ -1,6 +1,6 @@
 # MOTD Templater
 
-A SSH Login Banner Generator for Linux
+A SSH Login Banner Generator for Linux, based on templates inspired by formatted strings.
 
 ## Installation
 
