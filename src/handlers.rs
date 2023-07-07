@@ -3,6 +3,7 @@ use std::{collections::HashMap, fs, path::Path};
 use anyhow::{Context, Result};
 use colored::Colorize;
 use lazy_static::lazy_static;
+use procfs::process::Process;
 use sysinfo::{CpuRefreshKind, DiskExt, System, SystemExt};
 
 lazy_static! {
@@ -13,6 +14,37 @@ lazy_static! {
         sys.refresh_disks_list();
         sys
     };
+}
+
+fn login_user() -> Result<String> {
+    let mut p = Process::myself()?;
+    loop {
+        let parent = p.status()?.ppid;
+        if let Ok(newp) = Process::new(parent) {
+            let cmd = newp
+                .cmdline()?
+                .first()
+                .map(|x| x.to_owned())
+                .with_context(|| "Cannot get process cmdline")?;
+            if cmd.starts_with("sshd") {
+                let username = cmd
+                    .split_ascii_whitespace()
+                    .skip(1)
+                    .next()
+                    .map(|x| x.to_owned())
+                    .with_context(|| "Unknown login user")?;
+                if username.is_empty() {
+                    anyhow::bail!("Unknown login user");
+                } else {
+                    return Ok(username);
+                }
+            }
+            p = newp;
+        } else {
+            break;
+        }
+    }
+    Ok(whoami::username())
 }
 
 fn load1() -> Result<String> {
@@ -145,7 +177,8 @@ pub fn build_builtins() -> HashMap<String, fn() -> Result<String>> {
         cpu_cores,
         root_disk_usage,
         data_disk_usage,
-        cuda_version
+        cuda_version,
+        login_user
     ]
 }
 

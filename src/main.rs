@@ -8,7 +8,7 @@ use pest_derive::Parser;
 use rustix::path::Arg;
 
 use crate::handlers::{build_builtins, build_modifiers};
- 
+
 #[derive(Parser)]
 #[grammar = "template.pest"]
 pub struct MotdTemplateParser;
