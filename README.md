@@ -6,7 +6,7 @@ A SSH Login Banner Generator for Linux, based on templates inspired by formatted
 
 ### Building from source
 
-Download the latest version of Rust compiler to compile it, and copy the executable to any folder within PATH.
+[Download the latest version of Rust compiler](https://rustup.rs/) to compile it, and copy the executable to any folder within PATH.
 
 ```bash
 $ git clone https://github.com/higersky/motd-templater
@@ -53,7 +53,7 @@ At the beginning of the file, you can assign custom variables as the output of a
 }
 ```
 
-After that, you can write the contents. The program will replace template expressions with its actual values, and write all characters to the standard output.  
+After that, you can write the contents. The program will replace template expressions with their actual values, and write all characters to the standard output.  
 
 - Syntax: `{identifier :optional_modifier1 :optional_modifier2 ...}`
 
@@ -65,4 +65,24 @@ After that, you can write the contents. The program will replace template expres
 {warn}
 ```
 
-Use any variables inside braces defiend at the beginning. You can also use builtin variables starting with $ (See `src/handlers.rs` for more information). Modifiers provide string transformations such as colorizing or formatting.
+Use any variables inside braces defined at the beginning. You can also use built-in variables starting with $ (See `src/handlers.rs` for more information). Modifiers provide string transformations such as colorizing or formatting.
+
+## Builtin variables
+
+- `$login_user`: Get the login username of the current ssh session. It's obtained by recursively finding a parent process with a cmdline like "sshd: username [priv]". Tested in Ubuntu 18.04 and 20.04
+- `$load1` / `$load5` / `$load15`: System load values from /proc/loadavg
+- `$hostname`: The system hostname
+- `$kernel_version`: Linux kernel version
+- `$memory_usage`: RAM usage percentage
+- `$swap_usage`: Swap usage percentage
+- `$cpu_cores`: The number of CPU cores in the system
+- `$root_disk_usage`: Disk usage percentage of the mount point /
+- `$data_disk_usage`: Disk usage percentage of the mount point /data
+- `$cuda_version`: Default cuda toolkit version. It's obtained by parsing /usr/local/cuda/version.json (CUDA 11+) or /usr/local/cuda/version.txt (CUDA 10 or older)
+
+## Modifiers
+
+- `underline`: Add underlines
+- `bold`: Make the string bold
+- `percent`: Append a `%` character
+- `warn_color`: Colorize a usage percentage value between 0 to 100
