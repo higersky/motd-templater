@@ -31,7 +31,8 @@ fn login_user() -> Result<String> {
                     .split_ascii_whitespace()
                     .skip(1)
                     .next()
-                    .map(|x| x.to_owned())
+                    .and_then(|x| x.split("@").next())
+                    .map(|x| x.trim().to_owned())
                     .with_context(|| "Unknown login user")?;
                 if username.is_empty() {
                     anyhow::bail!("Unknown login user");
