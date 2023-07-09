@@ -54,7 +54,7 @@ fn run(template: &str) -> Result<()> {
                         Rule::config => {
                             let mut config = subitem.into_inner();
                             let custom = config.next().expect("BUG: Expects an identifier");
-                            let command = config.next().expect("BUG: Expects an command");
+                            let command = config.next().expect("BUG: Expects a command");
                             custom_registry.insert(
                                 custom.as_str().to_string_lossy().to_string(),
                                 command.as_str().to_string_lossy().to_string(),
