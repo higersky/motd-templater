@@ -24,7 +24,7 @@ $ sudo cp target/release/motd-templater /usr/local/bin
 
 MOTD Templater allows you to generate MOTD messages by parsing template files. These templates can be utilized in various MOTD scripts to display customized login banners.
 
-The program expects you to provide the path to a template file as an argument. For example, let's assume you have a template file named `sysinfo.motd-template` located in the `sample` folder. After executing the command, MOTD Templater will process the template file and replace template expressions with their actual values. It will then display the generated MOTD message in the terminal.
+The program expects you to provide the path to a template file as an argument. For example, assume you have a template file named `sysinfo.motd-template` located in the `sample` folder. After executing the command, MOTD Templater will process the template file and replace template expressions with their actual values. It will then display the generated MOTD message in the terminal.
 
 ```bash
 $ motd-templater sample/sysinfo.motd-template
@@ -36,7 +36,7 @@ $ motd-templater sample/sysinfo.motd-template
 
 ## Template Syntax
 
-The template file utilized by MOTD Templater follows a braces-based format string syntax. This syntax allows you to include dynamic content and variable substitutions in your MOTD messages. Let's take a closer look at the template syntax:
+The template file utilized by MOTD Templater follows a braces-based format string syntax. This syntax allows you to include dynamic content in your MOTD messages. Let's take a closer look at the template syntax:
 
 1.  Defining Custom Variables (Optional):
     
