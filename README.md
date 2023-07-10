@@ -4,9 +4,9 @@ This is an SSH Login Banner Generator for Linux. With its easy-to-use template-b
 
 ## Installation: Building from Source
 
-To get started with MOTD Templater, follow these simple steps to build it from source:
+To get started, follow these steps to build it from source:
 
-1. Download and install the latest version of the Rust compiler: [rustup.rs](https://rustup.rs/). 
+1. Download and install the latest version of the Rust compiler from the official website [rustup.rs](https://rustup.rs/). 
     
 2. Clone the repository and build the application using Cargo.
 
@@ -22,7 +22,7 @@ $ sudo cp target/release/motd-templater /usr/local/bin
 
 ## Usage
 
-MOTD Templater allows you to generate MOTD messages by parsing template files. These templates can be utilized in various motd scripts to display customized login banners.
+MOTD Templater allows you to generate MOTD messages by parsing template files. These templates can be utilized in various MOTD scripts to display customized login banners.
 
 The program expects you to provide the path to a template file as an argument. For example, let's assume you have a template file named `sysinfo.motd-template` located in the `sample` folder. After executing the command, MOTD Templater will process the template file and replace template expressions with their actual values. It will then display the generated MOTD message in the terminal.
 
