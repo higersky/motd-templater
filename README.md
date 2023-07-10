@@ -40,7 +40,7 @@ The template file utilized by MOTD Templater follows a braces-based format strin
 
 1.  Defining Custom Variables (Optional):
     
-    At the beginning of the template file, you can assign custom variables using shell commands. Each assignment should be declared on a separate line. Here's an example:
+    At the beginning of the template file, you can assign custom variables with shell commands. Each assignment should be declared on a separate line. Here's an example:
     
     ```text
     @{
