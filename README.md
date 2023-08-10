@@ -1,6 +1,6 @@
-# MOTD Templater: Creating Dynamic SSH Login Banners with Template Strings
+# MOTD Templater: Creating Dynamic SSH Login Banners with Format Strings
 
-This is an SSH Login Banner Generator for Linux. With its easy-to-use template-based approach, you can easily create dynamic and informative Message of the Day (MOTD) messages to greet users upon login.
+An SSH login banner generator for Linux, using format strings to create dynamic Message of the Day (MOTD) messages to greet users upon login.
 
 ## Installation: Building from Source
 
@@ -101,5 +101,3 @@ To enhance the visual appeal of your MOTD messages, MOTD Templater offers variou
 *   `warn_color`: Colorizes a usage percentage value between 0 and 100.
 
 By applying these modifiers to your template expressions, you can make your MOTD messages more visually appealing and easy to read.
-
-That's it! You are now equipped with the knowledge to create engaging and dynamic MOTD messages using MOTD Templater. 
